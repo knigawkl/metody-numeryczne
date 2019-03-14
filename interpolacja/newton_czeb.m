@@ -52,7 +52,6 @@ function y = getValues(x)
     for i=1:size(x,2)
         y(i)=2/(2+x(i)^9)+1;
     end
-    disp(size(x,2))
 end
 %%
 function x = chebyshev(len)
