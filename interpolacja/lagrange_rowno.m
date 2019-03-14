@@ -34,7 +34,7 @@ end
 function y = getValues(x)
     len=size(x,2);
     y=zeros(len,1);
-    for i=1:size(x,1)
+    for i=1:size(x,2)
         y(i)=2/(2+x(i)^9)+1;
     end
 end
