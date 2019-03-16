@@ -27,6 +27,38 @@ legend('5 wêz³ów', '9 wêz³ów', '11 wêz³ów', '15 wêz³ów');
 hold off;
 
 %%
+X=linspace(-1,1,1111);
+Y=getValues(X);
+points_x=splitInterval(5);
+points_y=getValues(points_x);
+intY=lagrange(X, points_x, points_y);
+D=abs(Y'-intY);
+m5=max(D);
+a5=mean(D);
+
+points_x=splitInterval(9);
+points_y=getValues(points_x);
+intY=lagrange(X, points_x, points_y);
+D=abs(Y'-intY);
+m9=max(D);
+a9=mean(D);
+
+points_x=splitInterval(11);
+points_y=getValues(points_x);
+intY=lagrange(X, points_x, points_y);
+D=abs(Y'-intY);
+m11=max(D);
+a11=mean(D);
+
+points_x=splitInterval(15);
+points_y=getValues(points_x);
+intY=lagrange(X, points_x, points_y);
+D=abs(Y'-intY);
+m15=max(D);
+a15=mean(D);
+
+sprintf("%g %g \n %g %g \n %g %g \n %g %g \n",m5, a5, m9, a9, m11, a11, m15, a15)
+%%
 function x = splitInterval(node_count)
     x=linspace(-1,1,node_count);
 end
