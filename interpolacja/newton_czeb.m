@@ -76,7 +76,7 @@ function y = newton(x, points_x, points_y)
     end
     r = D(1,:);
     p = r(n);
-    for i=n-1:-1:1
+    for i=n-1:-1:1 
         p = [p r(i)] - [0 p*points_x(i)];
     end
     y = polyval(p,x);
