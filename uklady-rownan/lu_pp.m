@@ -1,9 +1,9 @@
 A=[5 3 2; 1 2 0; 3 0 4];
-
+b=[10 5 -2]';
 %L= choleski(A);
 [L, U] = doolittle(A);
-L
-U
+y=L\b;
+x=U\y
 %%
 function L=choleski(A)
     n=size(A);
