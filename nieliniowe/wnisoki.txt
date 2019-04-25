@@ -1,0 +1,2 @@
+1. Metoda bisekcji przypomniała nam o algorytmie wyszukiwania binarnego.
+2. 
