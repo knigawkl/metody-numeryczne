@@ -28,39 +28,41 @@ newtonzl(ypoints, 0.01, 3)
 newtonzl(ypoints, 0.01, 4)
 
 %% wykres do zad3
-result_nc_1=zeros(1,1000);
+result_nc_2=zeros(1,1000);
 result_nc_2=zeros(1,1000);
 result_nc_3=zeros(1,1000);
 result_nc_4=zeros(1,1000);
 
 for i=1:1000
     d=1;
-    N=(d)*i+1;
+    N=(d-1)*i+1;
     h=2/(N-1);
     argx=linspace(-1,1,N);
     argy=fun(argx);
     result_nc_1(i)=newtonzl(argy,h,d);
     d=2;
-    N=(d)*i+1;
+    N=(d-1)*i+1;
     h=2/(N-1);
     argx=linspace(-1,1,N);
     argy=fun(argx);
     result_nc_2(i)=newtonzl(argy,h,d);
     d=3;
-    N=(d)*i+1;
+    N=(d-1)*i+1;
     h=2/(N-1);
     argx=linspace(-1,1,N);
     argy=fun(argx);
     result_nc_3(i)=newtonzl(argy,h,d);
     d=4;
-    N=(d)*i+1;
+    N=(d-1)*i+1;
     h=2/(N-1);
     argx=linspace(-1,1,N);
     argy=fun(argx);
     result_nc_4(i)=newtonzl(argy,h,d);
 end
 
-loglog(1:1000, abs(result_nc_1 - 2.0), 1:1000, abs(result_nc_2 - 2.0), 1:1000, abs(result_nc_3 - 2.0), 1:1000, abs(result_nc_4 - 2.0));
+loglog(1:1000, abs(result_nc_3 - 2.0));
+%  [1:1000], abs(result_nc_3 – 2.0),...
+%  [1:1000], abs(result_nc_4 - 2.0)) 
 
 %% newton prosty
 function y = newtonpr(fi, h)
