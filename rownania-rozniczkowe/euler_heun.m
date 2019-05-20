@@ -26,6 +26,11 @@ ax.XAxisLocation="origin";
 ax.YAxisLocation="origin";
 hold on;
 
+%% errors
+er_err=abs(y-er(2, :));
+max_er_err=max(er_err);
+hr_err=abs(y-hr(2,:));
+max_hr_err= max(hr_err);
 
 %% euler's method
 function euler_results = euler(h,x0,y0,point_count)
