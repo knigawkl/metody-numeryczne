@@ -1,8 +1,6 @@
 clc;
 clear;
 h=0.001;
-start=0;
-finish=10;
 x0=0;
 y0=1;
 x=0:h:10;
