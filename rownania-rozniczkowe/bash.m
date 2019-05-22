@@ -27,10 +27,10 @@ ax.YAxisLocation="origin";
 hold on;
 
 %% errors
-er_err=abs(y-b2(2, :));
-max_er_err=max(er_err);
-hr_err=abs(y-b3(2,:));
-max_hr_err= max(hr_err);
+b2_err=abs(y-b2(2, :));
+max_b2_err=max(b2_err);
+b3_err=abs(y-b3(2,:));
+max_b3_err= max(b3_err);
 
 %% euler's method
 function euler_results = euler(h,t0,x0,v0,point_count)
@@ -67,12 +67,12 @@ function bash_results = abash(h,t0,x0,v0,point_count,step) %specjalna dedykacja 
         v_prev=bash_results(3,i-1);
         t=t_prev+h;
         if step == 2
-            x=x_prev+h*(3/2*bash_results(2,i-1)+(-1/2)*bash_results(2,i-2));
-            v=v_prev+h*(3/2*bash_results(3,i-1)+(-1/2)*bash_results(2,i-2));
+            x=x_prev+h*(3/2*bash_results(3,i-1)+(-1/2)*bash_results(3,i-2));
+            v=v_prev+h*(-3/2*bash_results(2,i-1)+(1/2)*bash_results(2,i-2));
         end
         if step == 3
-            x=x_prev+h*(23/12*bash_results(2,i-1)+(-16/12)*bash_results(2,i-2)+5/12*bash_results(2,i-3));
-            v=v_prev+h*(23/12*bash_results(3,i-1)+(-16/12)*bash_results(3,i-2)+5/12*bash_results(3,i-3));
+            x=x_prev+h*(23/12*bash_results(3,i-1)+(-16/12)*bash_results(3,i-2)+5/12*bash_results(3,i-3));
+            v=v_prev+h*(-23/12*bash_results(2,i-1)+(16/12)*bash_results(2,i-2)-5/12*bash_results(2,i-3));
         end
         bash_results(:,i)=[t,x,v];    
     end                   
