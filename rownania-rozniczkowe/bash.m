@@ -8,8 +8,8 @@ v0=1;
 t=0:h:10;
 point_count=length(t);
 
-b2=bash(h,t0,x0,v0,point_count, 2);
-b3=bash(h,t0,x0,v0,point_count, 3);
+b2=abash(h,t0,x0,v0,point_count, 2);
+b3=abash(h,t0,x0,v0,point_count, 3);
 
 f=@(x)(sin(x));
 y=arrayfun(f, t);
@@ -48,7 +48,7 @@ function euler_results = euler(h,t0,x0,v0,point_count)
 end
 
 %% adams-bash
-function bash_results = bash(h,t0,x0,v0,point_count,step) %specjalna dedykacja dla ATO
+function bash_results = abash(h,t0,x0,v0,point_count,step) %specjalna dedykacja dla ATO
     bash_results=zeros(3,point_count);
     bash_results(:,1)=[t0;x0;v0];
     for i=2:step
@@ -67,12 +67,12 @@ function bash_results = bash(h,t0,x0,v0,point_count,step) %specjalna dedykacja d
         v_prev=bash_results(3,i-1);
         t=t_prev+h;
         if step == 2
-            x=x_prev+h*(3*bash_results(2,i-1)+(-1)*bash_results(2,i-2));
-            v=v_prev+h*(3*bash_results(3,i-1)+(-1)*bash_results(2,i-2));
+            x=x_prev+h*(3/2*bash_results(2,i-1)+(-1/2)*bash_results(2,i-2));
+            v=v_prev+h*(3/2*bash_results(3,i-1)+(-1/2)*bash_results(2,i-2));
         end
         if step == 3
-            x=x_prev+h*(23*bash_results(2,i-1)+(-16)*bash_results(2,i-2)+5*bash_results(2,i-3));
-            v=v_prev+h*(23*bash_results(3,i-1)+(-16)*bash_results(3,i-2)+5*bash_results(3,i-3));
+            x=x_prev+h*(23/12*bash_results(2,i-1)+(-16/12)*bash_results(2,i-2)+5/12*bash_results(2,i-3));
+            v=v_prev+h*(23/12*bash_results(3,i-1)+(-16/12)*bash_results(3,i-2)+5/12*bash_results(3,i-3));
         end
         bash_results(:,i)=[t,x,v];    
     end                   
